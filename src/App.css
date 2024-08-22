@@ -1,9 +1,46 @@
 :root {
   --main-background-color: white;
   --secondary-background-color: #60040e;
-
+  --drop-shadow: 10px 10px 5px 0 rgb(20, 20, 20);
   font-size: 16px;
+}
 
+@media (max-width: 600px) {
+  :root {
+    font-size: 14px; /* Reduce base font size for mobile */
+  }
+
+  .game-board .status {
+    width: 90%;
+    height: 40px;
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+
+  .board {
+    width: 90vw;
+    height: 90vw;
+    margin-bottom: 20px;
+  }
+
+  .square {
+    font-size: 1.5rem;
+  }
+
+  .square p {
+    font-size: 3rem;
+  }
+
+  button {
+    width: 90%;
+    height: 40px;
+    padding: 10px;
+    font-size: 1rem;
+  }
+
+  .game-info ol {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 * {
@@ -14,44 +51,61 @@
 
 body {
   background-color: whitesmoke;
+  height: 100vh;
 }
 
 p {
   font-size: 2rem;
 }
 
-.confirm-button {
-  background-color: fuchsia;
-  width: 128px;
-  height: 32px;
-  border-radius: 15px;
-  border: none;
-  margin: 10px 0 0 0;
-  /* padding: 100px; */
-  /* margin: 10px; */
-  
+.game-board {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #c07442;
+  width: 100%;
+  height: 100%;
 }
 
-.images {
-  width: 1000px;
-  margin: 20px 0 0 20px;
-  box-shadow: 10px 10px 5px 2px green  ;
+.game-board .status {
+  background-color: green;
+  width: 20%;
+  height: 50px;
+  text-align: center;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  box-shadow: var(--drop-shadow);
+}
+
+.game-board .board-border {
+  display: inherit;
+  flex-direction: inherit;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
 .board {
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
-}
-
-.board .board-row {
-  display: grid;
   grid-template-columns: repeat(3, 1fr);
-  max-width: 192px;
+  grid-template-rows: repeat(3, 1fr);
+  background-color: var(--main-background-color);
+  width: 70vh;
+  height: 70vh;
+  border: black solid 2px;
+  margin-bottom: 50px;
+  box-shadow: var(--drop-shadow);
 }
 
 .square {
-  width: 64px;
-  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
   border: 1px black solid;
   border-radius: 0;
   font-size: 2rem;
@@ -59,12 +113,36 @@ p {
   margin: 0;
   text-align: center;
   cursor: default;
-
 }
 
 .square p {
-  margin: 10px 0;
+  text-align: center;
+  font-size: 5rem;
+  font-weight: bolder;
 }
 
+.game-info ol {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+}
 
+.game-info ol li {
+  display: inline-block;
+}
 
+button {
+  background-color: green;
+  height: 50px;
+  text-align: center;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  box-shadow: var(--drop-shadow);
+  font-size: 1.2rem;
+}
+
+button:disabled {
+  background-color: grey;
+  color: red;
+}
